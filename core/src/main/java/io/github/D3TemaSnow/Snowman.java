@@ -5,15 +5,16 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 
 
-public class Trump extends Character {
+public class Snowman extends Character {
     public Sound sound;
-    public Trump(Texture img, float x, float y, Sound sound){
+    public Snowman(Texture img, float x, float y, Sound sound){
         super(img, x, y, 300, 300);
         this.sound = sound;
     }
 
     @Override
     void onClick() {
+        sound.stop();
         sound.play();
 //        snd.stop();
 //        snd1.stop();
