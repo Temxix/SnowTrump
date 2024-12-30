@@ -20,7 +20,7 @@ abstract public class Character {
 
     boolean hit(float tx, float ty){
         return
-            x < tx && tx < x + width && y < ty && ty < y + height;
+           (x < tx) && (tx < x + width) && (y < ty) && (ty < y + height);
     }
     abstract void onClick();
 }
