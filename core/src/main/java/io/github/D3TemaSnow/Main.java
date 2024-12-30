@@ -18,7 +18,8 @@ public class Main extends ApplicationAdapter {
     public Texture imgSnow;
     public Texture imgSnowman;
     public Sound snd1;
-    public Sound snd2;
+    public Sound snd0;
+    public Sound[] sounds = new Sound[2];
     public Snow[] snow = new Snow[200];
     public Snowman snowman;
 
@@ -27,11 +28,14 @@ public class Main extends ApplicationAdapter {
         batch = new SpriteBatch();
         imgBackGround = new Texture("background.jpg");
         touch = new Vector3();
-        imgSnow = new Texture("wasp.jpg");
-        imgSnowman = new Texture("trump.jpg");
-        snd1 = Gdx.audio.newSound(Gdx.files.internal("wasp.mp3"));
-        snd2 = Gdx.audio.newSound(Gdx.files.internal("trump.mp3"));
-        snowman = new Snowman(imgSnowman,200,100, snd1);
+        imgSnow = new Texture("snow.jpg");
+        imgSnowman = new Texture("snowman.jpg");
+        snd1 = Gdx.audio.newSound(Gdx.files.internal("music1.mp3"));
+        snd0 = Gdx.audio.newSound(Gdx.files.internal("music0.mp3"));
+        sounds[0] = snd0;
+        sounds[1] = snd1;
+        snowman = new Snowman(imgSnowman,200,100, sounds);
+
         for (int i = 0; i < snow.length; i++) {
             int size = MathUtils.random(70, 120);
             int x = (int) MathUtils.random(size + 20, SCR_WIDTH - 20 - size);
@@ -74,6 +78,6 @@ public class Main extends ApplicationAdapter {
         imgSnow.dispose();
         imgSnowman.dispose();
         snd1.dispose();
-        snd2.dispose();
+        snd0.dispose();
     }
 }

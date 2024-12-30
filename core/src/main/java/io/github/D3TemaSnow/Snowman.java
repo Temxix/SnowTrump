@@ -6,24 +6,24 @@ import com.badlogic.gdx.graphics.Texture;
 
 
 public class Snowman extends Character {
-    public Sound sound;
-    public Snowman(Texture img, float x, float y, Sound sound){
-        super(img, x, y, 300, 300);
-        this.sound = sound;
+    public static final float WIDTH = 240;
+    public static final float HEIGHT = 300;
+    public Sound[] sounds;
+    public int currentSound = 0;
+    public Snowman(Texture img, float x, float y, Sound[] sounds){
+        super(img, x, y, WIDTH, HEIGHT);
+        this.sounds = sounds;
     }
 
     @Override
     void onClick() {
-        sound.stop();
-        sound.play();
-//        snd.stop();
-//        snd1.stop();
-//        if (isLeav) {
-//            snd.play();
-//            isLeav = false;
-//        } else {
-//            snd1.play();
-//            isLeav = true;
-//        }
+        if (sounds.length > 0) {
+            sounds[currentSound].stop();
+            currentSound ++;
+            if (currentSound == sounds.length) {
+                currentSound = 0;
+            }
+            sounds[currentSound].play();
+        }
     }
 }
